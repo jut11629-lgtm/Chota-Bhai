@@ -3,91 +3,128 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Chota Bhai 👑</title>
+
 <style>
 *{box-sizing:border-box}
 body{
  margin:0;
  font-family:Georgia,serif;
- background:radial-gradient(circle at top,#173d70,#06152d 65%,#020814);
- color:#fff;
+ color:white;
  text-align:center;
+ background:radial-gradient(circle at top,#244d7d,#071a35 65%,#020814);
  min-height:100vh;
  overflow-x:hidden;
 }
 .gold{
- color:#ffdc82;
- text-shadow:0 0 10px #d69c35,0 0 25px #b47a20;
+ color:#ffdb83;
+ text-shadow:0 0 10px #d69c35,0 0 25px #d69c35;
 }
-header{padding:25px 12px}
-h1{font-size:34px}
-p{line-height:1.8;color:#e5e9f2}
+header{padding:25px 10px}
+h1{font-size:32px}
+p{line-height:1.8;color:#e8eaf1}
 .card{
- width:91%;max-width:520px;
- margin:25px auto;padding:30px 20px;
- background:#102a4beF;
- border:1px solid #d5aa55;
- border-radius:22px;
- box-shadow:0 0 25px #d4a34355;
+ width:91%;
+ max-width:520px;
+ margin:22px auto;
+ padding:27px 18px;
+ background:linear-gradient(145deg,#17375b,#091b35);
+ border:1px solid #d8ad59;
+ border-radius:23px;
+ box-shadow:0 0 25px #d8ad5944;
 }
 button{
- padding:14px 23px;margin:10px 5px;
- border:1px solid #ffdf91;
+ padding:13px 22px;
+ margin:10px 5px;
+ border:1px solid #ffe5a5;
  border-radius:30px;
- background:linear-gradient(100deg,#b57b25,#f6d77f);
- color:#10213a;font-size:16px;
- font-weight:bold;cursor:pointer;
+ background:linear-gradient(110deg,#a9701f,#ffe19a);
+ color:#142746;
+ font-size:15px;
+ font-weight:bold;
+ cursor:pointer;
 }
-button:active{transform:scale(.96)}
-.page{display:none;animation:show .8s}
+button:active{transform:scale(.95)}
+.page{display:none;animation:appear .8s}
 .page.active{display:block}
-@keyframes show{
+@keyframes appear{
  from{opacity:0;transform:translateY(20px)}
  to{opacity:1;transform:translateY(0)}
 }
-.envelope{font-size:100px;animation:float 2s infinite}
-@keyframes float{50%{transform:translateY(-13px)}}
-.cake{font-size:100px;margin:20px}
-.photo{
- width:100%;max-height:250px;object-fit:cover;
- margin-top:15px;border-radius:15px;
- border:2px solid #e6bd68;
+.envelope{
+ font-size:95px;
+ animation:float 2s infinite;
 }
+@keyframes float{
+ 50%{transform:translateY(-12px)}
+}
+.photo{
+ width:85%;
+ max-width:310px;
+ height:310px;
+ object-fit:cover;
+ border-radius:50%;
+ border:5px solid #eac66e;
+ box-shadow:0 0 25px #e6b64d99;
+ margin:20px auto;
+}
+.cake{font-size:95px;margin:20px}
 .star{
- position:fixed;top:-20px;
- pointer-events:none;z-index:5;
+ position:fixed;
+ top:-30px;
+ pointer-events:none;
  animation:fall linear forwards;
+ z-index:10;
 }
 @keyframes fall{
  to{transform:translateY(110vh) rotate(360deg);opacity:0}
 }
-footer{padding:30px;color:#e3bd70}
-input{max-width:100%;margin:15px;color:white}
+.music{
+ background:#071b34;
+ border:1px solid #eac66e;
+ border-radius:15px;
+ padding:15px;
+ margin:15px auto;
+}
+iframe{
+ width:100%;
+ max-width:300px;
+ height:170px;
+ border:0;
+ border-radius:12px;
+}
+footer{padding:25px;color:#eac66e}
 </style>
 </head>
+
 <body>
 
 <header>
 <h1 class="gold">👑 Happy Birthday 👑</h1>
-<p>A Special Celebration For Someone Special 💙</p>
+<p>A Royal Celebration For Someone Special 💙</p>
 </header>
 
+<!-- PAGE 1 -->
 <section class="page active" id="p1">
 <div class="card">
 <div class="envelope">💌</div>
 <h1 class="gold">Hey Chota Bhai!</h1>
-<p>A little surprise has been prepared just for you!</p>
+<p>A special surprise is waiting for you!</p>
 <p>Are you ready to open it? 🎁</p>
 <button onclick="next(2)">Open Your Surprise 💙</button>
 </div>
 </section>
 
+<!-- PAGE 2 -->
 <section class="page" id="p2">
 <div class="card">
-<h1 class="gold">🎉 It's Your Day! 🎉</h1>
-<div style="font-size:65px">🎈🎊🎈</div>
-<h2>Happy Birthday Chota Bhai!</h2>
+<h1 class="gold">🎉 It's Your Special Day 🎉</h1>
+
+<img src="photo.jpg" class="photo"
+alt="Birthday Boy">
+
+<h2 class="gold">Happy Birthday Chota Bhai!</h2>
 <p>
 May your life always be full of happiness,
 success, laughter and beautiful memories.
@@ -98,26 +135,34 @@ May every dream of yours come true.
 </div>
 </section>
 
+<!-- PAGE 3 -->
 <section class="page" id="p3">
 <div class="card">
 <h1 class="gold">🎂 Birthday Cake 🎂</h1>
 <div class="cake" id="cake">🎂</div>
 <p id="cakeText">Make a beautiful birthday wish!</p>
-<button onclick="cutCake()">Cut The Cake 🔪</button>
+<button onclick="cutCake()">Cut The Cake 🎉</button>
 <button onclick="next(4)">Next ➜</button>
 </div>
 </section>
 
+<!-- PAGE 4 -->
 <section class="page" id="p4">
 <div class="card">
-<h1 class="gold">📸 Beautiful Memories</h1>
-<p>Select your favourite pictures to create a memory gallery.</p>
-<input type="file" id="photos" accept="image/*" multiple>
-<div id="gallery"></div>
-<button onclick="next(5)">Continue ➜</button>
+<h1 class="gold">🎵 A Special Song 🎵</h1>
+<p>Aik Baat Kahoon 💙</p>
+
+<div class="music">
+<p>Tap below to play your birthday song!</p>
+<button onclick="playSong()">▶ Play Song</button>
+<div id="songPlayer"></div>
+</div>
+
+<button onclick="next(5)">Next Surprise ➜</button>
 </div>
 </section>
 
+<!-- PAGE 5 -->
 <section class="page" id="p5">
 <div class="card">
 <h1 class="gold">💙 A Message For You</h1>
@@ -136,6 +181,7 @@ believe in yourself!
 </div>
 </section>
 
+<!-- PAGE 6 -->
 <section class="page" id="p6">
 <div class="card">
 <div style="font-size:85px">👑</div>
@@ -147,13 +193,19 @@ believe in yourself!
 </div>
 </section>
 
-<footer>Made with 💙 for Chota Bhai</footer>
+<footer>
+Made with 💙 for Chota Bhai
+<br>👑 Forever Special 👑
+</footer>
 
 <script>
 function next(n){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.querySelectorAll('.page').forEach(p=>{
+  p.classList.remove('active');
+ });
  document.getElementById('p'+n).classList.add('active');
  window.scrollTo({top:0,behavior:'smooth'});
+ celebrate();
 }
 
 function cutCake(){
@@ -164,7 +216,7 @@ function cutCake(){
 }
 
 function celebrate(){
- for(let i=0;i<50;i++){
+ for(let i=0;i<35;i++){
   let s=document.createElement('div');
   s.className='star';
   s.innerText=['✨','💙','⭐','🎉','🌟'][Math.floor(Math.random()*5)];
@@ -176,16 +228,10 @@ function celebrate(){
  }
 }
 
-document.getElementById('photos').addEventListener('change',function(e){
- let gallery=document.getElementById('gallery');
- gallery.innerHTML='';
- [...e.target.files].forEach(file=>{
-  let img=document.createElement('img');
-  img.className='photo';
-  img.src=URL.createObjectURL(file);
-  gallery.appendChild(img);
- });
-});
+function playSong(){
+ document.getElementById('songPlayer').innerHTML=
+ '<iframe src="https://www.youtube.com/embed/CF1vezYi7rA?autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+}
 
 setInterval(()=>{
  let s=document.createElement('div');
@@ -195,7 +241,8 @@ setInterval(()=>{
  s.style.animationDuration=(4+Math.random()*4)+'s';
  document.body.appendChild(s);
  setTimeout(()=>s.remove(),8500);
-},650);
+},800);
 </script>
+
 </body>
 </html>

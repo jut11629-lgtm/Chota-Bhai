@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday Chota Bhai 👑</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Georgia,serif;
+ background:radial-gradient(circle at top,#173d70,#06152d 65%,#020814);
+ color:#fff;
+ text-align:center;
+ min-height:100vh;
+ overflow-x:hidden;
+}
+.gold{
+ color:#ffdc82;
+ text-shadow:0 0 10px #d69c35,0 0 25px #b47a20;
+}
+header{padding:25px 12px}
+h1{font-size:34px}
+p{line-height:1.8;color:#e5e9f2}
+.card{
+ width:91%;max-width:520px;
+ margin:25px auto;padding:30px 20px;
+ background:#102a4beF;
+ border:1px solid #d5aa55;
+ border-radius:22px;
+ box-shadow:0 0 25px #d4a34355;
+}
+button{
+ padding:14px 23px;margin:10px 5px;
+ border:1px solid #ffdf91;
+ border-radius:30px;
+ background:linear-gradient(100deg,#b57b25,#f6d77f);
+ color:#10213a;font-size:16px;
+ font-weight:bold;cursor:pointer;
+}
+button:active{transform:scale(.96)}
+.page{display:none;animation:show .8s}
+.page.active{display:block}
+@keyframes show{
+ from{opacity:0;transform:translateY(20px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.envelope{font-size:100px;animation:float 2s infinite}
+@keyframes float{50%{transform:translateY(-13px)}}
+.cake{font-size:100px;margin:20px}
+.photo{
+ width:100%;max-height:250px;object-fit:cover;
+ margin-top:15px;border-radius:15px;
+ border:2px solid #e6bd68;
+}
+.star{
+ position:fixed;top:-20px;
+ pointer-events:none;z-index:5;
+ animation:fall linear forwards;
+}
+@keyframes fall{
+ to{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+footer{padding:30px;color:#e3bd70}
+input{max-width:100%;margin:15px;color:white}
+</style>
+</head>
+<body>
+
+<header>
+<h1 class="gold">👑 Happy Birthday 👑</h1>
+<p>A Special Celebration For Someone Special 💙</p>
+</header>
+
+<section class="page active" id="p1">
+<div class="card">
+<div class="envelope">💌</div>
+<h1 class="gold">Hey Chota Bhai!</h1>
+<p>A little surprise has been prepared just for you!</p>
+<p>Are you ready to open it? 🎁</p>
+<button onclick="next(2)">Open Your Surprise 💙</button>
+</div>
+</section>
+
+<section class="page" id="p2">
+<div class="card">
+<h1 class="gold">🎉 It's Your Day! 🎉</h1>
+<div style="font-size:65px">🎈🎊🎈</div>
+<h2>Happy Birthday Chota Bhai!</h2>
+<p>
+May your life always be full of happiness,
+success, laughter and beautiful memories.
+May every dream of yours come true.
+</p>
+<h2 class="gold">Keep Shining! ✨</h2>
+<button onclick="next(3)">Next Surprise ➜</button>
+</div>
+</section>
+
+<section class="page" id="p3">
+<div class="card">
+<h1 class="gold">🎂 Birthday Cake 🎂</h1>
+<div class="cake" id="cake">🎂</div>
+<p id="cakeText">Make a beautiful birthday wish!</p>
+<button onclick="cutCake()">Cut The Cake 🔪</button>
+<button onclick="next(4)">Next ➜</button>
+</div>
+</section>
+
+<section class="page" id="p4">
+<div class="card">
+<h1 class="gold">📸 Beautiful Memories</h1>
+<p>Select your favourite pictures to create a memory gallery.</p>
+<input type="file" id="photos" accept="image/*" multiple>
+<div id="gallery"></div>
+<button onclick="next(5)">Continue ➜</button>
+</div>
+</section>
+
+<section class="page" id="p5">
+<div class="card">
+<h1 class="gold">💙 A Message For You</h1>
+<div style="font-size:65px">👑✨🎁</div>
+<p>
+Dear Chota Bhai,<br><br>
+You are a special part of our lives.
+May your journey always be filled with
+new opportunities, great achievements,
+happiness and countless blessings.<br><br>
+Keep smiling, keep growing and always
+believe in yourself!
+</p>
+<h2 class="gold">Stay Blessed! 💙</h2>
+<button onclick="next(6)">Final Surprise 🎁</button>
+</div>
+</section>
+
+<section class="page" id="p6">
+<div class="card">
+<div style="font-size:85px">👑</div>
+<h1 class="gold">You're Special!</h1>
+<p>May this new year of your life be your best one yet!</p>
+<h1 class="gold">HAPPY BIRTHDAY! 🎉</h1>
+<p>With lots of love 💙</p>
+<button onclick="next(1)">Replay Surprise 🔄</button>
+</div>
+</section>
+
+<footer>Made with 💙 for Chota Bhai</footer>
+
+<script>
+function next(n){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById('p'+n).classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function cutCake(){
+ document.getElementById('cake').innerText='🍰✨';
+ document.getElementById('cakeText').innerText=
+ 'Cake cutting time! May all your wishes come true! 💙';
+ celebrate();
+}
+
+function celebrate(){
+ for(let i=0;i<50;i++){
+  let s=document.createElement('div');
+  s.className='star';
+  s.innerText=['✨','💙','⭐','🎉','🌟'][Math.floor(Math.random()*5)];
+  s.style.left=Math.random()*100+'vw';
+  s.style.fontSize=(15+Math.random()*20)+'px';
+  s.style.animationDuration=(2+Math.random()*3)+'s';
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),5500);
+ }
+}
+
+document.getElementById('photos').addEventListener('change',function(e){
+ let gallery=document.getElementById('gallery');
+ gallery.innerHTML='';
+ [...e.target.files].forEach(file=>{
+  let img=document.createElement('img');
+  img.className='photo';
+  img.src=URL.createObjectURL(file);
+  gallery.appendChild(img);
+ });
+});
+
+setInterval(()=>{
+ let s=document.createElement('div');
+ s.className='star';
+ s.innerText=['✦','✨','⭐','💙'][Math.floor(Math.random()*4)];
+ s.style.left=Math.random()*100+'vw';
+ s.style.animationDuration=(4+Math.random()*4)+'s';
+ document.body.appendChild(s);
+ setTimeout(()=>s.remove(),8500);
+},650);
+</script>
+</body>
+</html>

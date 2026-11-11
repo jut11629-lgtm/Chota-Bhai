@@ -3,136 +3,209 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>For My Chota Bhai 👑</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chota Bhai Birthday Surprise 👑</title>
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;min-height:100vh;text-align:center;
- font-family:Georgia,serif;color:#fff4d4;
- background:radial-gradient(circle at top,#244d83,#07172f 65%,#020914);
+ margin:0;min-height:100vh;text-align:center;color:#fff3d0;
+ font-family:Georgia,serif;
+ background:radial-gradient(circle at top,#244b7c,#091a35 65%,#020817);
 }
-main{max-width:650px;margin:auto;padding:25px 18px}
-h1{color:#ffdb78;text-shadow:0 0 15px #e2a72d;font-size:38px}
-h2{color:#ffdf91}
-p{font-size:18px;line-height:1.7}
-.panel{
- margin:22px auto;padding:25px 18px;
- border:1px solid #e8bd5d;border-radius:22px;
- background:#ffffff0d;box-shadow:0 0 25px #e5b64c33;
+main{max-width:650px;margin:auto;padding:22px 16px}
+h1{color:#ffdc83;text-shadow:0 0 16px #d49a32;font-size:clamp(30px,8vw,43px)}
+h2{color:#ffe2a0}
+p{font-size:17px;line-height:1.7}
+.card{
+ padding:23px 17px;margin:20px auto;border-radius:23px;
+ border:1px solid #e5bb61;background:#ffffff0d;
+ box-shadow:0 0 24px #d9a43b33;
 }
-button{
- border:0;border-radius:30px;padding:14px 25px;
- margin:12px;background:linear-gradient(120deg,#ffe69a,#bd8428);
- color:#17223b;font-size:17px;font-weight:bold;cursor:pointer;
+button,.fileButton{
+ display:inline-block;padding:14px 23px;margin:10px 5px;
+ border:0;border-radius:30px;cursor:pointer;
+ background:linear-gradient(120deg,#ffe69a,#bd8428);
+ color:#14213a;font-size:16px;font-weight:bold;
 }
-button:active{transform:scale(.96)}
-.step{display:none;animation:appear .8s ease}
-#one{display:block}
-@keyframes appear{
- from{opacity:0;transform:translateY(20px)}
+.step{display:none;animation:show .7s ease}
+#step1{display:block}
+@keyframes show{
+ from{opacity:0;transform:translateY(18px)}
  to{opacity:1;transform:translateY(0)}
 }
-.envelope{font-size:100px;cursor:pointer;filter:drop-shadow(0 0 15px #ffcf58)}
-.photo{
- width:220px;height:220px;margin:20px auto;
- border:5px solid #f5ce65;border-radius:50%;overflow:hidden;
- background:#14294b;display:flex;align-items:center;
- justify-content:center;color:#ffe29a;
+.envelope{font-size:90px;cursor:pointer}
+#preview{
+ display:none;width:220px;height:220px;object-fit:cover;
+ margin:18px auto;border:5px solid #f4cf70;
+ border-radius:20px;box-shadow:0 0 20px #e3b54d;
 }
-.photo img{width:100%;height:100%;object-fit:cover}
-.cake{font-size:100px;transition:.5s}
-.cut{transform:rotate(-12deg) scale(1.1)}
-.small{font-size:14px;color:#e8d49f}
+.photoPlaceholder{
+ width:220px;height:220px;margin:18px auto;
+ border:3px dashed #e4bd67;border-radius:20px;
+ display:flex;align-items:center;justify-content:center;
+ color:#ffe4a5;background:#ffffff09;
+}
+input[type=file]{display:none}
+.cake{font-size:95px}
+footer{padding:25px;color:#e7c986;font-size:14px}
 </style>
 </head>
 <body>
 <main>
- <div style="font-size:38px;margin-top:15px">👑 ✨ 👑</div>
+<div style="font-size:40px">👑 ✨ 👑</div>
 
- <section class="step" id="one">
-  <div class="panel">
-   <h1>A Special Letter</h1>
-   <p>Someone has prepared a beautiful surprise for you...</p>
-   <div class="envelope" onclick="showStep(2)">💌</div>
-   <p>Tap the envelope to open</p>
-   <button onclick="showStep(2)">Open Envelope 💌</button>
+<section class="step" id="step1">
+ <div class="card">
+  <h1>A Special Birthday Surprise</h1>
+  <p>Someone has prepared a beautiful surprise for you!</p>
+  <div class="envelope">💌</div>
+  <button onclick="showStep(2)">Open Envelope 💌</button>
+ </div>
+</section>
+
+<section class="step" id="step2">
+ <div class="card">
+  <h1>Dear Chota Bhai ❤️</h1>
+  <p>Today is your special day. I have prepared
+  something wonderful just for you.</p>
+  <p>May your life always be filled with happiness,
+  love and beautiful moments.</p>
+  <button onclick="showStep(3)">Continue 🎁</button>
+ </div>
+</section>
+
+<section class="step" id="step3">
+ <div class="card">
+  <h1>Add Your Picture 📸</h1>
+  <p>Click below and select a picture from your gallery.</p>
+
+  <label class="fileButton" for="photoInput">
+   📁 Choose Your File
+  </label>
+  <input id="photoInput" type="file" accept="image/*">
+
+  <div class="photoPlaceholder" id="placeholder">
+   Your Picture Will Appear Here
   </div>
- </section>
+  <img id="preview" alt="Selected picture">
 
- <section class="step" id="two">
-  <div class="panel">
-   <h1>Dear Chota Bhai ❤️</h1>
-   <p>
-    Today is your special day! I have prepared
-    something special just for you.
-   </p>
-   <p>May your life always be filled with happiness,
-   love and beautiful moments.</p>
-   <button onclick="showStep(3)">Read Your Surprise 🎁</button>
+  <p id="photoStatus">No picture selected yet.</p>
+  <button id="downloadBtn" onclick="downloadWebsite()" disabled>
+   Download Website ⬇️
+  </button>
+  <br>
+  <button onclick="showStep(4)">Continue to Surprise 🎁</button>
+ </div>
+</section>
+
+<section class="step" id="step4">
+ <div class="card">
+  <h1>HAPPY BIRTHDAY!</h1>
+  <div style="font-size:65px">🎉🎊🎁</div>
+  <h2>My Lovely Chota Bhai 💛</h2>
+  <p>May your dreams come true and every day
+  bring happiness, success and smiles.</p>
+  <p>You are special. Keep shining always!</p>
+  <button onclick="playSong();showStep(5)">
+   Open Birthday Surprise 🎵
+  </button>
+ </div>
+</section>
+
+<section class="step" id="step5">
+ <div class="card">
+  <h1>It's Cake Time! 🎂</h1>
+  <div class="cake" id="cake">🎂</div>
+  <p id="cakeMessage">Make a birthday wish!</p>
+  <button onclick="cutCake()">Cut The Cake 🎂</button>
+  <div id="ending" style="display:none">
+   <h1>Lots of Love! ❤️</h1>
+   <p>Stay blessed and happy forever!</p>
+   <div style="font-size:45px">🎈🎊🎁</div>
   </div>
- </section>
+ </div>
+</section>
 
- <section class="step" id="three">
-  <div class="panel">
-   <h1>One More Thing! 🎉</h1>
-   <div class="photo">
-    <img src="photo.jpg" alt="Your picture"
-    onerror="this.style.display='none';this.parentElement.innerHTML='📷 Your Photo Here'">
-   </div>
-   <p>A special memory for a special person.</p>
-   <button onclick="startSurprise()">Open Surprise 🎁</button>
-  </div>
- </section>
-
- <section class="step" id="four">
-  <div class="panel">
-   <div style="font-size:65px">🎊🎉🎊</div>
-   <h1>HAPPY BIRTHDAY!</h1>
-   <h2>My Lovely Chota Bhai 💛</h2>
-   <p>May your dreams come true and your days
-   be full of laughter, success and happiness.</p>
-   <p>You are truly special. Keep smiling always!</p>
-   <button onclick="showStep(5)">Next: Cake Time 🎂</button>
-  </div>
- </section>
-
- <section class="step" id="five">
-  <div class="panel">
-   <h1>Birthday Cake 🎂</h1>
-   <div class="cake" id="cake">🎂</div>
-   <p id="cakeText">Make a birthday wish!</p>
-   <button onclick="cutCake()">Cut The Cake 🔪</button>
-   <div id="final" style="display:none">
-    <h1>Lots of Love! ❤️</h1>
-    <p>Stay blessed, happy and successful always.</p>
-    <div style="font-size:40px">🎈🎊🎁</div>
-   </div>
-  </div>
- </section>
-
- <p class="small">Made with love ❤️ Just for you</p>
+<footer>Made with Love ❤️ Just For You</footer>
 </main>
 
-<script>
-function showStep(n){
- document.querySelectorAll(".step").forEach(s=>s.style.display="none");
- document.getElementById(["","one","two","three","four","five"][n]).style.display="block";
- window.scrollTo(0,0);
-}
-function startSurprise(){
- showStep(4);
- const player=document.getElementById("music");
- player.src="https://www.youtube.com/embed/CF1vezYi7rA?autoplay=1";
-}
-function cutCake(){
- document.getElementById("cake").classList.add("cut");
- document.getElementById("cakeText").textContent="Yay! Happy Birthday! 🎉";
- document.getElementById("final").style.display="block";
-}
-</script>
 <iframe id="music" width="1" height="1"
  style="position:absolute;left:-9999px"
  allow="autoplay; encrypted-media"></iframe>
+
+<script>
+const EMBEDDED_PHOTO = "";
+
+let selectedPhoto = EMBEDDED_PHOTO;
+
+function showStep(n){
+ document.querySelectorAll(".step").forEach(s=>s.style.display="none");
+ document.getElementById("step"+n).style.display="block";
+ window.scrollTo(0,0);
+}
+
+function displayPhoto(data){
+ const img=document.getElementById("preview");
+ img.src=data;
+ img.style.display="block";
+ document.getElementById("placeholder").style.display="none";
+}
+
+if(EMBEDDED_PHOTO){
+ displayPhoto(EMBEDDED_PHOTO);
+ document.getElementById("photoStatus").textContent="Picture loaded!";
+}
+
+document.getElementById("photoInput").addEventListener("change",function(){
+ const file=this.files[0];
+ if(!file)return;
+
+ if(!file.type.startsWith("image/")){
+  alert("Please select an image.");
+  return;
+ }
+
+ const reader=new FileReader();
+ reader.onload=function(e){
+  selectedPhoto=e.target.result;
+  displayPhoto(selectedPhoto);
+  document.getElementById("photoStatus").textContent="Picture selected successfully! ❤️";
+  document.getElementById("downloadBtn").disabled=false;
+ };
+ reader.readAsDataURL(file);
+});
+
+function downloadWebsite(){
+ if(!selectedPhoto){
+  alert("Please choose a picture first.");
+  return;
+ }
+
+ let html="<!DOCTYPE html>\n"+document.documentElement.outerHTML;
+ html=html.replace(
+  'const EMBEDDED_PHOTO = "";',
+  'const EMBEDDED_PHOTO = '+JSON.stringify(selectedPhoto)+';'
+ );
+
+ const blob=new Blob([html],{type:"text/html"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+ a.href=url;
+ a.download="index.html";
+ a.click();
+ URL.revokeObjectURL(url);
+}
+
+function playSong(){
+ document.getElementById("music").src=
+ "https://www.youtube.com/embed/CF1vezYi7rA?autoplay=1";
+}
+
+function cutCake(){
+ document.getElementById("cake").textContent="🍰";
+ document.getElementById("cakeMessage").textContent="Happy Birthday! 🎉";
+ document.getElementById("ending").style.display="block";
+}
+</script>
 </body>
 </html>
